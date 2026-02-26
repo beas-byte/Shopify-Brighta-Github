@@ -1,0 +1,306 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [
+        "a {font-size: 13px;}"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "breadcrumb_alignment": "left",
+        "breadcrumb_color": "#999999",
+        "breadcrumb_bg": "rgba(0,0,0,0)",
+        "breadcrumb_gradient": "",
+        "breadcrumb_color_mb": "",
+        "breadcrumb_bg_mb": "#f6f6f6",
+        "breadcrumb_gradient_mb": "",
+        "show_page_title": false,
+        "page_title_alignment": "left",
+        "container": "default",
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 30,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "layout": "1"
+      }
+    },
+    "page_banner_qjibqb": {
+      "type": "page-banner",
+      "settings": {
+        "use-page-banner": false,
+        "use-custom-text": false,
+        "breadcrumb-on": true,
+        "text-above": "",
+        "disable-text-above": true,
+        "custom-title": "",
+        "custom-desc": "",
+        "custom-color": "#232323",
+        "use-button": false,
+        "button-name": "Enquire Now",
+        "button-url": "",
+        "banner_type": "bg_image",
+        "banner_position": "center",
+        "banner_position-width": "center",
+        "page_banner_color": "#000000"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a": {
+          "type": "category",
+          "settings": {
+            "show_block": false,
+            "heading": "Products",
+            "type": "3_level",
+            "link_list": "products"
+          }
+        }
+      },
+      "block_order": [
+        "80b0a11c-fb01-4b89-8a29-1dbb2a1db16a"
+      ],
+      "settings": {
+        "colors_bg": "rgba(0,0,0,0)",
+        "colors_bg_gradient": "",
+        "container": "default",
+        "mg_top_desktop": 20,
+        "mg_top_tablet": 30,
+        "mg_top_mobile": 30,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "show_sidebar": true,
+        "show_sidebar_collapse": true,
+        "enable_sticky": false,
+        "sidebar_layout": "layout_1",
+        "sidebar_collapse_default": "expand",
+        "sidebar_type": "vertical",
+        "sidebar_position": "left",
+        "sidebar_heading_font": "font_1",
+        "sidebar_heading_font_size": 14,
+        "sidebar_heading_font_weight": "700",
+        "sidebar_heading_text_transform": "uppercase",
+        "show_filter": true,
+        "filter_swatch": "Color",
+        "filter_swatch_type": "color",
+        "filter_rectangle": "Size",
+        "filter_display_type": "show-more",
+        "max_item_per_filter": 10,
+        "filter_hidden_tag_list": "",
+        "show_toolbar": true,
+        "show_sorting": true,
+        "show_item_per_page": true,
+        "show_view_as": true,
+        "products_per_page": "20",
+        "layout": "4",
+        "show_infinite_scrolling": "show_more",
+        "show_banner": true,
+        "show_banner_1": false,
+        "banner_position_1": "4",
+        "link_banner_1": "",
+        "show_banner_2": false,
+        "banner_position_2": "5",
+        "link_banner_2": "",
+        "show_banner_3": false,
+        "banner_position_3": "12",
+        "link_banner_3": ""
+      }
+    },
+    "split_new_section_HTxLzt": {
+      "type": "split-new-section",
+      "blocks": {
+        "splitimage_mNHGkW": {
+          "type": "splitimage",
+          "settings": {
+            "img_block_width": "50%",
+            "split_img_block_margin": "0px 0px 0px 0px",
+            "img_split_bg": "rgba(0,0,0,0)",
+            "split_block_image": "shopify:\/\/shop_images\/acc.jpg",
+            "custom-class-img": "",
+            "imagealignment": "0 auto"
+          }
+        },
+        "splittexts_6hN497": {
+          "type": "splittexts",
+          "settings": {
+            "texts_block_width": "50%",
+            "column_padding": "0px 30px 0px 30px",
+            "custom-class": "",
+            "split_text_block_margin": "10px 0px 0px 0px",
+            "text_split_bg": "rgba(0,0,0,0)",
+            "split_block_title": "Drilling Templates for Studbite Cable Tray Trapeze Supports",
+            "line-style-on": false,
+            "title_text_color": "#232323",
+            "title_font_size": "30px",
+            "split_block_description": "",
+            "textorhtml": "texts",
+            "split_block_html": "",
+            "split_block_desc": "<p>To complement our STUDBITE Install-Ready Trapeze System, we offer Drilling Templates tailored for fast, precise, and efficient installation of your cable tray trapeze supports. \u2028<\/p><p>These templates are designed to streamline the set-out process, eliminating the need for constant measuring, marking and pre-drilling the fixing positions for STUDBITE Trapeze system rod hangers. <\/p><p>Available with hole centres to suit  150mm, 300mm, 450mm and 600mm cable tray widths.  Custom-made sizes are available upon request. <\/p><p>For fast install, simply line up the centre markings on the template with a laser line and your hole centre measurements are all square, lined up and the same every time - marking out the soffit for your rod hangers becomes very fast & efficient<\/p>",
+            "textalignment": "left",
+            "desc_text_color": "#000000",
+            "desc_font_size": "18px",
+            "showfrstbtn": false,
+            "split_firstbtn": "Button 1",
+            "split_firstbtn_url": "",
+            "frstbtnopn": false,
+            "firstbtn_padding": "10px 30px 10px 30px",
+            "frst_btn_txt_colr": "#ffffff",
+            "frst_btn_brdr_colr": "#006cb6",
+            "frst_btn_bg_colr": "#006cb6",
+            "frst_btn_bg_colr_hover": "rgba(0,0,0,0)",
+            "frst_btn_colr_hover": "#000000",
+            "frst_btn_brdr_colr_hover": "#000000",
+            "showscndtbtn": false,
+            "split_scndbtn": "Button 2",
+            "split_scndbtn_url": "",
+            "scndbtnopn": false,
+            "scndbtn_padding": "10px 30px 10px 30px",
+            "scnd_btn_txt_colr": "#ffffff",
+            "scnd_btn_brdr_colr": "#112d55",
+            "scnd_btn_bg_colr": "#112d55"
+          }
+        }
+      },
+      "block_order": [
+        "splitimage_mNHGkW",
+        "splittexts_6hN497"
+      ],
+      "settings": {
+        "fullwidths": false,
+        "section_margin": "50px 0px 0px 0px",
+        "section_padding": "70px 0px 70px 0px",
+        "main_title": "",
+        "main_text_color": "#232323",
+        "section_color": "#f5f5f5",
+        "vertical-align": "flex-start",
+        "column_gap": "20px",
+        "verticalalign": "center",
+        "custom_class": "",
+        "custom_id": ""
+      }
+    },
+    "custom_cta_ABWXjW": {
+      "type": "custom-cta",
+      "settings": {
+        "cta_sec_id": "collection-cta-full",
+        "fullwidths": true,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "cta_bacground_image": "shopify:\/\/shop_images\/2ndfull.jpg",
+        "cta_text_title": "Why Choose BLITZ?",
+        "title_margin_bot": 20,
+        "cta_texts": "<p>At Blitz Systems, we're committed to transforming the way cable and HVAC support systems are installed onsite without hotworks. Our cutting-edge technologies are engineered to streamline installation procedures, saving you time, money, and frustration. Compared to traditional methods, Blitz Systems is 70% faster, empowering you to accomplish more in your day.\u2028<\/p>",
+        "cta_texts_font_size": 18,
+        "cta_texts_color": "#141006",
+        "cta_button_text": "",
+        "cta_button_link": "",
+        "btn_margin_top": 25
+      }
+    },
+    "faq_mzTKGC": {
+      "type": "faq",
+      "blocks": {
+        "paragraph_HhTTzL": {
+          "type": "paragraph",
+          "settings": {
+            "title": "",
+            "question_1": "What are Blitz Systems Accessories?",
+            "answer_1": "Blitz Systems Accessories are specialised tools and components designed to enhance the installation process of cable and HVAC support systems, particularly for ladder trays and trapeze installations. There are a range of fasteners and tray installation accessories to prove you with a complete package to get the job done fast, smart and efficiently.",
+            "question_2": "Are Blitz Systems Accessories compatible with existing infrastructure?",
+            "answer_2": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.<\/p>",
+            "question_3": "What are the key benefits of using Drilling Templates for Studbite Cable Tray Trapeze Supports?",
+            "answer_3": "The key benefits of using the Drilling Templates include fast marking out of stud centres for the STUDBITE Trapeze System and allowing the opportunity to use a single laser beam to eliminate misalignment of fixing positions.",
+            "question_4": "Can Blitz Systems provide custom-made sizes for Drilling Templates?",
+            "answer_4": "Blitz Systems offers a revolutionary, unique retrofit feature known as the Multi-Fix Bracket. The bracket removes trapeze builds when working along existing infrastructure, offering multiple fixing options including top, side and thread clamp. Allowing for easy accessibility and adjustable fixing.",
+            "question_5": "",
+            "answer_5": "",
+            "question_6": "Is Blitz Systems STUDBITE system compatible with ladder, basket and standard tray?",
+            "answer_6": "Blitz Systems offers a range of accessories to cater for all ladder, basket and standard tray supports.",
+            "question_7": "What are Blitz Systems standard delivery times?",
+            "answer_7": "Blitz works according to a fast consumer business meaning our warehouse is always fully-stocked for whenever you need our products. If you order by 2.00pm we can your delivery to you by the next day.",
+            "question_8": "",
+            "answer_8": "",
+            "question_9": "",
+            "answer_9": "",
+            "question_10": "",
+            "answer_10": "",
+            "faq_button_text": "",
+            "faq_button_link": "#",
+            "faq_btn_margin_top": 50
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_HhTTzL"
+      ],
+      "settings": {
+        "background_color_id": "rgba(0,0,0,0)",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "faqs_text": "",
+        "faqs_message_heading": "Frequently Asked Questions",
+        "faqs_message_text": "",
+        "show_faqs_filter": false,
+        "message_method_link_1": "",
+        "message_method_text_1": "",
+        "message_method_link_2": "",
+        "message_method_text_2": "",
+        "contact_content_text": "",
+        "contact_text": "",
+        "contact_link": "",
+        "contact_color": "#ffffff",
+        "contact_color_border": "#ef6454",
+        "contact_color_bg": "#ef6454",
+        "contact_color_bg_gradient": "",
+        "contact_color_hover": "#ffffff",
+        "contact_color_border_hover": "#ef6454",
+        "contact_color_bg_hover": "#ef6454",
+        "contact_color_bg_gradient_hover": ""
+      }
+    },
+    "custom_cta_VikgFx": {
+      "type": "custom-cta",
+      "settings": {
+        "cta_sec_id": "",
+        "fullwidths": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "cta_bacground_image": "shopify:\/\/shop_images\/cta-custom.jpg",
+        "cta_text_title": "Blitz Systems gets the job done faster and easier",
+        "title_margin_bot": 20,
+        "cta_texts": "",
+        "cta_texts_font_size": 18,
+        "cta_texts_color": "#141006",
+        "cta_button_text": "Enquire now",
+        "cta_button_link": "shopify:\/\/pages\/contact-us",
+        "btn_margin_top": 25
+      }
+    },
+    "17144919733e260263": {
+      "type": "apps",
+      "settings": {
+        "include_margins": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "page_banner_qjibqb",
+    "product-grid",
+    "split_new_section_HTxLzt",
+    "custom_cta_ABWXjW",
+    "faq_mzTKGC",
+    "custom_cta_VikgFx",
+    "17144919733e260263"
+  ]
+}

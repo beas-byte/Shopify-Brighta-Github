@@ -1,0 +1,148 @@
+<div class="lpcol-section" style="margin: {{ section.settings.section_margin }}">
+
+
+ <div class="container">
+   <div class="lpcol-items">
+      <div class="lpcols-item">
+        <div class="item-title colitem">
+          <h3>{{ section.settings.firstcol_title }}</h3>
+        </div>
+        <div class="item-first-img colitem">
+           <img src="{{ section.settings.firstcol_fimage | img_url:'master'}}">
+        </div>
+        <div class="item-texts colitem">
+          {{ section.settings.firstcol_textx }}
+        </div>
+        <div class="item-scnd-img colitem">
+           <img src="{{ section.settings.firstcol_simage | img_url:'master'}}">
+        </div>
+      </div>
+  {% for block in section.blocks %}
+      <div class="lpcols-item">
+         <div class="lpslide-item deskitem">
+               <div class="item-title colitem">
+                <h3>{{ block.settings.lpitems_title }}</h3>
+              </div>
+              <div class="item-first-img colitem">
+                 <img src="{{ block.settings.lpitems_fimage | img_url:'master'}}">
+              </div>
+              <div class="item-scnd-img colitem">
+                 <img src="{{ block.settings.lpitems_simage | img_url:'master'}}">
+              </div>
+              <div class="item-thrd-img colitem">
+                 <img src="{{ block.settings.lpitems_timage | img_url:'master'}}">
+              </div>
+         </div>
+        <div class="mobilehide">
+           <div class="item-title colitem">
+                <h3>{{ block.settings.lpitems_title }}</h3>
+            </div>
+           <div class="lpslide-item formblslider">
+                <div class="item-first-img colitem">
+                   <img src="{{ block.settings.lpitems_fimage | img_url:'master'}}">
+                </div>
+                <div class="item-scnd-img colitem">
+                   <img src="{{ block.settings.lpitems_simage | img_url:'master'}}">
+                </div>
+                <div class="item-thrd-img colitem">
+                   <img src="{{ block.settings.lpitems_timage | img_url:'master'}}">
+                </div>
+           </div>
+        </div>
+      </div>
+      {% endfor %}       
+     </div>
+        
+      </div>
+
+</div>
+
+
+<script>
+$('.formblslider').slick({
+  infinite: true,
+  arrows: true,
+  prevArrow: '<i class="fa fa-regular fa-chevron-left slick-left"></i>', 
+  nextArrow: '<i class="fa fa-regular fa-chevron-right slick-right"></i>',
+  autoplay: true,
+  speed: 300,
+  autoplaySpeed: 2000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+});
+  
+</script>
+
+
+
+
+{% schema %}
+  {
+    "name": "Inska LP Item",
+    "class": "lpcols",
+    "settings": [
+      {
+        "id": "section_margin",
+        "type": "text",
+        "label": "Add margin",
+        "default": "50px 0px 0px 0px"
+      },
+      {
+        "id": "firstcol_title",
+        "type": "text",
+        "label": "First Column Title"
+      },
+      {
+        "id": "firstcol_fimage",
+        "type": "image_picker",
+        "label": "Add image 1"
+      },
+      {
+        "id": "firstcol_textx",
+        "type": "richtext",
+        "label": "Add texts"
+      },
+      {
+        "id": "firstcol_simage",
+        "type": "image_picker",
+        "label": "Add image 2"
+      }
+      
+    ],
+    "blocks" :[
+      {
+       "type" : "lpitems",
+        "name" : "LP Inside Block",
+        "limit" : 2,
+        "settings" : [
+          {
+            "id": "lpitems_title",
+            "type": "text",
+            "label": "Items Title"
+          },
+          {
+            "id": "lpitems_fimage",
+            "type": "image_picker",
+            "label": "Add image 1"
+          },
+          {
+            "id": "lpitems_simage",
+            "type": "image_picker",
+            "label": "Add image 2"
+          },
+          {
+            "id": "lpitems_timage",
+            "type": "image_picker",
+            "label": "Add image 3"
+          }
+        ]
+      } 
+    ],
+    "presets": [
+      {
+        "name": "Inska LP Item",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

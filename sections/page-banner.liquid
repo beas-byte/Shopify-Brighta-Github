@@ -1,0 +1,253 @@
+<style>
+ .pagebanner.bea{
+   background-position: {{section.settings.banner_position-width}} {{section.settings.banner_position}} !important;
+ }
+  .pagebanner.bea h1, .pagebanner.bea p, h1.custom-page-title {
+    color: {{section.settings.custom-color}} !important;
+}
+
+.page_title.non-banner {
+  background: url({{ section.settings.page_banner | img_url:'master' }}) no-repeat;
+    background-size:cover;
+    background-position: {{section.settings.banner_position-width}} {{section.settings.banner_position}};
+    height: 150px;
+    display: grid;
+    align-items: center;
+}
+    {% if section.settings.banner_type == 'bg_color'  %}
+.page_title.non-banner {
+  background-color: {{ section.settings.page_banner_color }};
+}
+{% endif %}
+.page_title.non-banner.bg_color {
+    background-image: none;
+}
+    .page_title.non-banner .container {
+    padding: 0 0 20px 0;
+}
+</style>
+
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+{% if section.settings.breadcrumb-on == true %}
+  {% include 'breadcrumb' %}
+{% endif %}
+  
+<div class="page-width page-width--narrow custom-content-{{ section.settings.use-custom-text }}">
+
+{% if section.settings.use-page-banner %}  
+  
+{% if section.settings.banner_type == 'bg_color'  %}
+  <div class="pagebanner bea color-{{ section.settings.bg_color }}" style="background:{{ section.settings.page_banner_color }};">  
+{% endif %}
+
+{% if section.settings.banner_type == 'bg_image'  %}
+  <div class="pagebanner bea image-color-{{ section.settings.bg_color }}" style="background: url({{ section.settings.page_banner | img_url:'master' }}) no-repeat; background-size:cover; background-color:#000;">
+{% endif %} 
+
+<div class="page_banner_right">
+  <div class="page_title">
+    <div class="container">
+      <div>
+        
+      {% if section.settings.disable-text-above %}
+  {% comment %} No text above the title {% endcomment %}
+{% else %}
+  {% if section.settings.text-above != blank %}
+    <p>{{ section.settings.text-above }}</p>
+  {% else %}
+    <p>{{ page_title }}</p>
+  {% endif %}
+{% endif %}
+
+        
+      {% if section.settings.use-custom-text %}
+          <h1>{{ section.settings.custom-title }}</h1>
+          <p>{{ section.settings.custom-desc }}</p>
+      {% else %}      
+          <h1>{{ page_title }}</h1>
+      {% endif %}  
+
+      {% if section.settings.use-button %}
+  <div class="pagebanner-cta-but">
+    <a href="{{ section.settings.button-url }}">{{ section.settings['button-name'] }}</a>
+  </div>
+{% else %}
+{% endif %}     
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+    
+  <div class="page_title non-banner {{ section.settings.banner_type }}">
+
+ {% if section.settings.use-custom-text %}
+    <div class="container"> 
+   <h1>{{ section.settings.custom-title }}</h1>
+          <p>{{ section.settings.custom-desc }}</p>
+   </div>
+      {% else %}      
+           <div class="container"> <h1 class="custom-page-title">{{ page_title }}</h1></div>
+      {% endif %}  
+
+    
+   
+  
+  </div>
+  
+{% endif %} 
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page Banner",
+    "settings": [
+    {
+    "type": "checkbox",
+    "id": "use-page-banner",
+    "label": "Enable page banner",
+    "info": "Uncheck this to hide this banner. This will only display the title of the page",
+    "default": true
+  },
+  {
+    "type": "checkbox",
+    "id": "use-custom-text",
+    "label": "Use Custom Content",
+    "default": true
+  },
+    {
+        "type": "checkbox",
+        "id": "breadcrumb-on",
+        "label": "Enable Breadcrumbs",
+        "default": false
+      },
+    {
+        "type": "text",
+        "id": "text-above",
+        "label": "Text before the title",
+        "info": "If unchecked, page title will be shown"
+      },
+    {
+    "type": "checkbox",
+    "id": "disable-text-above",
+    "label": "Disable Text before title",
+    "default": true
+  },
+    {
+        "type": "text",
+        "id": "custom-title",
+        "label": "Custom Title",
+        "default": "Heading"
+      },
+    {
+        "type": "textarea",
+        "id": "custom-desc",
+        "label": "Custom Description",
+        "default": "At Able Tech Services our mission is to maintain your ability to care by providing the best medical service you can find."
+      },
+    {
+        "type": "color",
+        "id": "custom-color",
+        "label": "Title and Description color",
+        "default": "#ffffff"
+      },
+    {
+        "type": "checkbox",
+        "id": "use-button",
+        "label": "Enable Button",
+        "default": false
+      },
+     {
+        "type": "text",
+        "id": "button-name",
+        "label": "Button Name",
+        "default": "Enquire Now"
+      },
+    {
+        "type": "url",
+        "id": "button-url",
+        "label": "Button Link"
+      },
+      {
+  "type": "select",
+  "id": "banner_type",
+  "label": "Select page banner type",
+  "options": [
+
+    {
+      "value": "bg_color",
+      "label": "Color Background"
+    },
+    {
+      "value": "bg_image",
+      "label": "Image Background"
+    }
+  ],
+  "default": "bg_image"
+},
+{
+  "type": "select",
+  "id": "banner_position",
+  "label": "Height banner position",
+  "options": [
+    {
+      "value": "top",
+      "label": "top"
+    },
+    {
+      "value": "center",
+      "label": "center"
+    },
+    {
+      "value": "bottom",
+      "label": "bottom"
+    }
+  ],
+  "default": "center"
+},
+    {
+  "type": "select",
+  "id": "banner_position-width",
+  "label": "Width banner position",
+  "options": [
+    {
+      "value": "left",
+      "label": "left"
+    },
+    {
+      "value": "center",
+      "label": "center"
+    },
+    {
+      "value": "right",
+      "label": "right"
+    }
+  ],
+  "default": "center"
+},
+      {
+        "id": "page_banner",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "page_banner_color",
+        "type": "color",
+        "label": "Background Color",
+        "default": "#000000"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Brighta Page banner",
+        "category": "Custom"
+
+      }
+    ]
+  }
+{% endschema %}

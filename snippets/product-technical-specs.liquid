@@ -1,0 +1,9 @@
+{%- liquid
+    assign technical_specs = settings.technical_specs
+-%}
+
+{% if section.settings.technical_specs %}
+ <div class="technical-specs">
+   {{ product.metafields.custom.technical_specs.value }}
+   </div>
+   {% endif %}

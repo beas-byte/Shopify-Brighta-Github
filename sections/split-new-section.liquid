@@ -1,0 +1,537 @@
+<div  {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %} class="section-block-{{ section.id }} split-section" style="margin: {{ section.settings.section_margin }}">
+  {% if section.settings.main_title != blank %}
+<div class="container">
+  <div class="section-title">
+    <h2 style="color:{{ section.settings.main_text_color }} ;">{{ section.settings.main_title }}</h2>
+  </div>
+</div>
+  {% endif %}
+  <div class="new-split-items">
+ <div class="{% if section.settings.fullwidths %} fullwidth {% else %} container {% endif %}">
+   <div class="newsplititem {{ section.settings.custom_class }}" style="align-items:{{section.settings.verticalalign}};">
+{% for block in section.blocks %}
+   {%- case block.type -%}
+    {%- when 'splitimage' -%}
+    <div class="new_split_wrapper image fade-in {{ block.settings.custom-class-img }}" style="background: {{ block.settings.img_split_bg }}; width: {{ block.settings.img_block_width }}; margin: {{ block.settings.imagealignment }};">
+        <img src="{{ block.settings.split_block_image | img_url:'master'}}" style="margin:{{ block.settings.split_img_block_margin }};">
+    </div>
+    {%- when 'splittexts' -%}
+    <div class="new_split_wrapper {{ block.settings.custom-class }}" style="justify-content: {% if block.settings.verticalalign == 'center'  %}center {% elsif block.settings.verticalalign == 'flex-end' %}end{% else %} start {% endif %}; background:{{ block.settings.text_split_bg }} ; width: {{ block.settings.texts_block_width }}; margin: {{ block.settings.split_text_block_margin }};">
+      <div class="texts-block" style="padding:{{block.settings.column_padding}}">
+         
+        {% if block.settings.line-style-on %}
+        <h2 class="line-style" style="color:{{ block.settings.title_text_color }}; font-size: {{ block.settings.title_font_size }} !important; line-height: 1.3;"> {{ block.settings.split_block_title }} </h2>
+          {% else %}
+          <h2 style="color:{{ block.settings.title_text_color }}; font-size: {{ block.settings.title_font_size }} !important; line-height: 1.3;"> {{ block.settings.split_block_title }} </h2>
+          {% endif %}
+          <p style="font-size:{{ block.settings.desc_font_size }}; color:{{ block.settings.desc_text_color }};">{{ block.settings.split_block_description }}</p>
+
+        {% if block.settings.textorhtml == 'texts'  %}
+        <div style="color:{{ block.settings.desc_text_color }}; font-size: {{ block.settings.desc_font_size }}; line-height: 1.4; 
+          text-align:{% if block.settings.textalignment == 'justify'  %}justify{% elsif block.settings.textalignment == 'right' %}right{% elsif block.settings.textalignment == 'center' %}center{% else %}left{% endif %};">
+     {{ block.settings.split_block_desc }}
+     <div class="split-button-blocks butt">
+  {% if block.settings.showfrstbtn %}
+    <a style="background:{{ block.settings.frst_btn_bg_colr }}; padding:{{ block.settings.firstbtn_padding }}; color:{{ block.settings.frst_btn_txt_colr }};" 
+       href="{{ block.settings.split_firstbtn_url }}" target="{% if block.settings.frstbtnopn %}_blank{% else %}{% endif %}">{{ block.settings.split_firstbtn }}</a>
+  {% endif %}
+  {% if block.settings.showscndtbtn %}
+    <a style="background:{{ block.settings.scnd_btn_bg_colr }}; padding:{{ block.settings.scndbtn_padding }}; color:{{ block.settings.scnd_btn_txt_colr }};" 
+       href="{{ block.settings.split_scndbtn_url }}" target="{% if block.settings.scndbtnopn %}_blank{% else %}{% endif %}">{{ block.settings.split_scndbtn }}</a>
+  {% endif %}
+</div>
+         {% if block.settings.split_block_desc != blank %}  
+
+      {% endif %}  
+     </div>
+{% endif %} 
+ {% if block.settings.textorhtml == 'htmls'  %}
+    <div class="htmlcontents">
+      {{ block.settings.split_block_html }}
+    </div>
+        
+ {% endif %}        
+      </div>
+     
+    </div>
+     
+
+
+   {%- endcase -%}
+  {% endfor %} 
+ </div>
+  </div>
+  </div>
+</div>
+
+
+<style>
+  {% assign frst_btn_bg_colr_hover = settings.frst_btn_bg_colr_hover %}
+  {% assign frst_btn_colr_hover = settings.frst_btn_colr_hover %}
+  {% assign frst_btn_brdr_colr_hover = settings.frst_btn_brdr_colr_hover %}
+
+ .split-button-blocks.butt a:hover {
+    background-color: {{ frst_btn_bg_colr_hover }};
+    color: {{ frst_btn_colr_hover }};
+    border-color: {{ frst_btn_brdr_colr_hover }};
+  }
+  .newsplititem {
+    display: flex;
+    gap: {{section.settings.column_gap }};
+    align-items: {{section.settings.verticalalign}};
+}
+  .split-button-blocks {
+    margin-top: 35px;
+    display: flex;
+    gap: 20px;
+}
+  .split-button-blocks a{
+    border-radius:8px;
+  }
+ .section-block-{{ section.id }}.split-section{
+    background:{{section.settings.section_color}};
+ }
+.section-block-{{ section.id }} {
+  padding: {{section.settings.section_padding}}
+}
+.new_split_wrapper {
+    position: relative;
+}
+
+ 
+
+  
+  @media screen and (max-width:767px){
+    .section-block-{{ section.id }} {
+      padding: 50px 0px !important;
+    }
+  }
+</style>
+
+
+
+{% schema %}
+  {
+    "name": "Brighta Split Section",
+    "class": "sections-split",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "fullwidths",
+        "label": "Full width section"
+      },
+      {
+        "id": "section_margin",
+        "type": "text",
+        "label": "Add margin",
+        "default": "0px",
+        "info": "0px 0px 0px 0px equals to: top left bottom right margin"
+      },
+      {
+            "id": "section_padding",
+            "type": "text",
+            "label": "Section Padding",
+            "default": "70px 0px 70px 0px",
+            "info": "Add padding in like (10px 0px 0px 0px), by default it will be top 0px 0px 0px 0px"
+          },
+      {
+        "id": "main_title",
+        "type": "text",
+        "label": "Add section title"
+      },
+      {
+        "type": "color",
+        "id": "main_text_color",
+        "label": "Title color",
+        "default": "#000000"
+      },      
+      {
+        "type": "color",
+        "id": "section_color",
+        "label": "Section background color",
+        "default": "transparent"
+      },
+      {
+            "type": "select",
+            "id": "vertical-align",
+            "label": "Column Vertical Alignment",
+            "options": [
+                    {
+                      "value": "flex-start",
+                      "label": "Top"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Middle"
+                    },
+              {
+                      "value": "flex-end",
+                      "label": "Left"
+                    }
+            ],
+            "default": "flex-start"
+          },
+      {
+        "id": "column_gap",
+        "type": "text",
+        "label": "Column Gap",
+        "default": "20px"
+      },
+      {
+            "type": "select",
+            "id": "verticalalign",
+            "label": "Content Alignment",
+            "options": [
+                    {
+                      "value": "flex-start",
+                      "label": "Top"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Middle"
+                    },
+              {
+                      "value": "flex-end",
+                      "label": "Bottom"
+                    }
+            ],
+            "default": "center"
+          },
+          
+      {
+        "id": "custom_class",
+        "type": "text",
+        "label": "Custom Class"
+      },
+      {
+        "id": "custom_id",
+        "type": "text",
+        "label": "Custom Id",
+        "info": "Do not add any space. This can be used as an anchor link"
+      }
+      
+    ],
+    "blocks" :[
+      {
+       "type" : "splitimage",
+        "name" : "Split Image Block",
+        "limit" : 2,
+        "settings" : [
+          {
+            "id": "img_block_width",
+            "type": "text",
+            "label": "Add Custom Width",
+            "default": "50%",
+            "info": "Add width in %, by default it will be 50%"
+          },
+          {
+            "id": "split_img_block_margin",
+            "type": "text",
+            "label": "Add margin",
+            "default": "0px 0px 0px 0px",
+            "info": "Add margin in like (10px 0px 0px 0px), by default it will be top 10px"
+          },
+          {
+            "type": "color",
+            "id": "img_split_bg",
+            "label": "Select background color",
+            "default": "transparent"
+          },
+         
+          {
+            "id": "split_block_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+        "type": "text",
+        "id": "custom-class-img",
+        "label": "Custom Class"     
+      },
+          {
+            "type": "select",
+            "id": "imagealignment",
+            "label": "Image Alignment",
+            "options": [
+                    {
+                      "value": "0 auto 0 0",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "0 auto",
+                      "label": "Center"
+                    },
+                    {
+                      "value": "0 0 0 auto",
+                      "label": "Right"
+                    }
+            ],
+            "default": "0 auto"
+          }
+        ]
+    },
+      {
+       "type" : "splittexts",
+        "name" : "Split Texts Block",
+        "limit" : 2,
+        "settings" : [
+          {
+            "id": "texts_block_width",
+            "type": "text",
+            "label": "Add Custom Width",
+            "default": "50%",
+            "info": "Add width in %, by default it will be 50%"
+          },
+      {
+            "id": "column_padding",
+            "type": "text",
+            "label": "Column Padding",
+            "default": "0px 0px 0px 0px",
+            "info": "Add padding in like (10px 0px 0px 0px), this is for (top left bottom right)"
+          },
+          {
+        "type": "text",
+        "id": "custom-class",
+        "label": "Custom Class"     
+      },
+          {
+            "id": "split_text_block_margin",
+            "type": "text",
+            "label": "Add margin",
+            "default": "10px 0px 0px 0px",
+            "info": "Add margin in like (10px 0px 0px 0px), by default it will be top 10px"
+          },
+          {
+            "type": "color",
+            "id": "text_split_bg",
+            "label": "Select background color",
+            "default": "transparent"
+          },
+          {
+            "id": "split_block_title",
+            "type": "text",
+            "label": "Add title"
+          },
+          {
+                "type": "checkbox",
+                "id": "line-style-on",
+                "label": "Enable Title Line style",
+                "default": false
+            },
+          {
+            "type": "color",
+            "id": "title_text_color",
+            "label": "Select title color",
+            "default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "title_font_size",
+            "label": "Title font size",
+            "default": "30px",
+            "info": "Add font size, default is 30px"
+          },
+          
+          {
+            "id": "split_block_description",
+            "type": "text",
+            "label": "Add Short description"
+          },
+          
+           {
+            "type": "select",
+            "id": "textorhtml",
+            "label": "Select content type",
+            "options": [
+                    {
+                      "value": "texts",
+                      "label": "Text"
+                    },
+                    {
+                      "value": "htmls",
+                      "label": "html"
+                    }
+              ],
+            "default": "texts"
+          },
+          {
+            "id": "split_block_html",
+            "type": "html",
+            "label": "Add html"
+          },
+          {
+            "id": "split_block_desc",
+            "type": "richtext",
+            "label": "Add Content"
+          },
+           {
+            "type": "select",
+            "id": "textalignment",
+            "label": "Text Alignment",
+            "options": [
+                    {
+                      "value": "left",
+                      "label": "Left"
+                    },
+                    {
+                      "value": "center",
+                      "label": "Center"
+                    },
+                    {
+                      "value": "right",
+                      "label": "Right"
+                    },
+                    {
+                      "value": "justify",
+                      "label": "Justify"
+                    }
+            ],
+            "default": "left"
+          },         
+          {
+            "type": "color",
+            "id": "desc_text_color",
+            "label": "Select description text color",
+            "default": "#000000"
+          },
+          {
+            "type": "text",
+            "id": "desc_font_size",
+            "label": "Description font size",
+            "default": "18px",
+            "info": "Add font size, default is 18px"
+          },
+          {
+            "type": "checkbox",
+            "id": "showfrstbtn",
+            "label": "Show Button 1"
+          },
+          {
+            "id": "split_firstbtn",
+            "type": "text",
+            "label": "Add button title",
+            "default": "Button 1"
+          },
+          {
+            "id": "split_firstbtn_url",
+            "type": "url",
+            "label": "Add button link"
+          },
+          {
+            "type": "checkbox",
+            "id": "frstbtnopn",
+            "label": "Open link in new tab?"
+          },
+          {
+            "id": "firstbtn_padding",
+            "type": "text",
+            "label": "Add button padding",
+            "default": "10px 30px 10px 30px",
+            "info": "Add padding in like (10px 30px 8px 30px), by default it will be top & bottom 10px, left & right 30px"
+          },
+          {
+            "type": "color",
+            "id": "frst_btn_txt_colr",
+            "label": "Button 1 text color",
+            "default": "#ffffff"
+          },
+          
+          {
+            "type": "color",
+            "id": "frst_btn_brdr_colr",
+            "label": "Button 1 border color",
+            "default": "#006CB6"
+          },
+          
+          {
+            "type": "color",
+            "id": "frst_btn_bg_colr",
+            "label": "Button 1 background color",
+            "default": "#006CB6"
+          },
+          {
+            "type": "color",
+            "id": "frst_btn_bg_colr_hover",
+            "label": "Button 1 hover background color",
+            "default": "transparent"
+          },
+          {
+            "type": "color",
+            "id": "frst_btn_colr_hover",
+            "label": "Button 1 hover text color",
+            "default": "#000"
+          },
+          {
+            "type": "color",
+            "id": "frst_btn_brdr_colr_hover",
+            "label": "Button 1 border color hover",
+            "default": "#000"
+          },
+          {
+            "type": "checkbox",
+            "id": "showscndtbtn",
+            "label": "Show Button 2"
+          },
+          {
+            "id": "split_scndbtn",
+            "type": "text",
+            "label": "Add button title",
+            "default": "Button 2"
+          },
+          {
+            "id": "split_scndbtn_url",
+            "type": "url",
+            "label": "Add button link"
+          },
+          {
+            "type": "checkbox",
+            "id": "scndbtnopn",
+            "label": "Open link in new tab?"
+          },
+          {
+            "id": "scndbtn_padding",
+            "type": "text",
+            "label": "Add button padding",
+            "default": "10px 30px 10px 30px",
+            "info": "Add padding in like (10px 30px 8px 30px), by default it will be top & bottom 10px, left & right 30px"
+          },
+          {
+            "type": "color",
+            "id": "scnd_btn_txt_colr",
+            "label": "Button 2 text color",
+            "default": "#ffffff"
+          },
+          
+          {
+            "type": "color",
+            "id": "scnd_btn_brdr_colr",
+            "label": "Button 2 border color",
+            "default": "#000000"
+          },
+          
+          {
+            "type": "color",
+            "id": "scnd_btn_bg_colr",
+            "label": "Button 2 background color",
+            "default": "#000000"
+          }
+        ]
+    }
+      
+    ],
+    "presets": [
+      {
+        "name": "Brighta Split Section",
+        "category": "Custom",
+        "blocks": [
+                {
+                    "type": "splitimage"
+                },
+                {
+                    "type": "splittexts"
+                }
+            ]
+      }
+    ]
+  }
+{% endschema %}

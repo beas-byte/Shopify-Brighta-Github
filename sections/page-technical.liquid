@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+
+  
+<div class="page-width page-width--narrow">
+  
+  {% if section.settings.showhide %}
+  <div class="pagebanner">
+  {% if section.settings.banner_type == 'bg_color_image'  %}
+  <div class="pagebanner_top">
+    <div class="page_banner_left" style="background:{{ section.settings.page_banner_color}};"></div>
+   <div class="page_banner_right" style="background:url({{ section.settings.page_banner | img_url:'master'}}) no-repeat; background-size:cover;"></div>
+  </div>
+      <div class="page_title">
+      <div class="container">
+           <h1>{{ page_title }}</h1>
+    </div>
+  </div>
+    {% endif %}
+
+   {% if section.settings.banner_type == 'bg_color'  %}
+  <div class="pagebanner_top_color">
+    <div class="page_banner_color" style="background:{{ section.settings.page_banner_color}};"></div>
+      <div class="page_title">
+      <div class="container">
+           <h1>{{ page_title }}</h1>
+    </div>
+  </div>
+  </div>
+    {% endif %}
+
+  {% if section.settings.banner_type == 'bg_image'  %}
+  <div class="pagebanner_top_image">
+   <div class="page_banner_image" style="background:url({{ section.settings.page_banner | img_url:'master'}}) no-repeat; background-size:cover;"></div>
+      <div class="page_title">
+      <div class="container">
+           <h1>{{ page_title }}</h1>
+    </div>
+  </div>
+  </div>
+    {% endif %}
+
+    
+
+</div>
+{% endif %}
+
+	<div class="container">
+	 
+	  <div class="rte">
+	    {{ page.content }}
+	  </div>
+  	</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.technical-page.name",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "showhide",
+        "label": "Show page title section",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "banner_type",
+        "label": "Select page banner type",
+        "options": [
+                {
+                  "value": "bg_color_image",
+                  "label": "Both Color & Image"
+                },
+                {
+                  "value": "bg_color",
+                  "label": "Color Background"
+                },
+                {
+                  "value": "bg_image",
+                  "label": "Image Background"
+                }
+        ],
+        "default": "bg_color_image"
+      },
+      {
+        "id": "page_banner",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "page_banner_color",
+        "type": "color",
+        "label": "Background Color",
+        "default": "#000000"
+      }
+    ]
+} 
+{% endschema %}

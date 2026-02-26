@@ -1,0 +1,121 @@
+<div class="footer-promo-wrapper" style="padding-top:{{ section.settings.padding_top }}px; 
+  padding-bottom:{{ section.settings.padding_bottom }}px; margin-top:{{ section.settings.margin_top }}px; margin-bottom:{{ section.settings.margin_bottom }}px; 
+  background:{{ section.settings.promo_bg }}">
+     <div class="container">
+     <div class="footer-promo-items">   
+    {% for block in section.blocks %}
+    <div class="promo-block-item" style="width: {{ block.settings.item_width}}%">
+
+      <div class="promo-img"> 
+         <img src="{{ block.settings.col_image_item | img_url:'master'}}">
+      </div>
+      <div class="promo-texts">
+          <h3>{{ block.settings.footer_promo_title}}</h3>
+        
+        {% if block.settings.footer_promo_link %}
+ 
+ <a href="{{ block.settings.footer_promo_link }}">
+    <h4>{{ block.settings.footer_promo_subtitle }}</h4>
+  </a>
+{% else %}
+  <h4>{{ block.settings.footer_promo_subtitle }}</h4>
+{% endif %}
+
+      </div>
+      </div>
+     {% endfor %} 
+  </div>
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Footer Promo",
+    "class": "sections-images-cols",
+    "settings": [
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Margin Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Margin Bottom",
+        "default": 0
+      },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 40
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 40
+      },
+      {
+        "type": "color",
+        "id": "promo_bg",
+        "label": "Select background color",
+        "default": "#FFCE17"
+      }
+    ],
+    "blocks": [
+      {
+        "type" : "imageblock",
+        "name" : "Promo Block",
+        "limit": 4,
+        "settings": [
+          {
+            "id": "item_width",
+            "type": "text",
+            "label": "Add width in %",
+            "default": "33.3"
+          },
+          {
+            "id": "col_image_item",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "footer_promo_title",
+            "type": "text",
+            "label": "Tile Text",
+            "default": "Title"
+          },
+          {
+            "id": "footer_promo_subtitle",
+            "type": "text",
+            "label": "Subtitle",
+            "default": "Subtitle"
+          },
+          {
+  "id": "footer_promo_link",
+  "type": "url",
+  "label": "Link"
+}
+        ]
+      }
+    ]
+  }
+{% endschema %}

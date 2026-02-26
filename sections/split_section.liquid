@@ -1,0 +1,190 @@
+<div class="split_section" style="margin: {{ section.settings.section_margin }}">
+  {% if section.settings.main_title != blank %}
+<div class="container">
+  <div class="section-title">
+    <h2>{{ section.settings.main_title }}</h2>
+  </div>
+</div>
+  {% endif %}
+  
+ {% for block in section.blocks %}
+ <div class="{% if block.settings.fullwidths %} fullwidth {% else %} container {% endif %}">
+<div class="split_elements">   
+<div class="split_left {% if block.settings.left_content_type == 'image_field'  %} imageselected {% else %} textseleted {% endif %}" style="background:{{ block.settings.split_bg }} ;">
+  <div class="split_bg_section split_wrapper">
+  {% if block.settings.left_content_type == 'image_field'  %}
+    <div class="section_image">
+      <img src="{{ block.settings.section_image | img_url:'master'}}">
+     </div>
+    {% endif %}
+  {% if block.settings.left_content_type == 'text_field'  %}
+     <div class="section_text">
+        <h2 style="color:{{ block.settings.text_color }} ;"> {{ block.settings.section_title }} </h2>
+        <div style="font-size:{{ block.settings.ldesc_font_size }}; color:{{ block.settings.text_color }} ;">{{ block.settings.section_desc }}</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+<div class="split_right {% if block.settings.right_content_type == 'rimage_field'  %} imageselected {% else %} textseleted {% endif %}" style="background:{{ block.settings.rsplit_bg }} ;">
+  <div class="split_bg_section split_wrapper">
+  {% if block.settings.right_content_type == 'rtext_field'  %}
+     <div class="section_text">
+        <h2 style="color:{{ block.settings.rtext_color }} ;"> {{ block.settings.rsection_title }} </h2>
+        <div style="font-size:{{ block.settings.rdesc_font_size }}; color:{{ block.settings.rtext_color }} ;">{{ block.settings.rsection_desc }}</div>
+    </div>
+     {% endif %}
+    {% if block.settings.right_content_type == 'rimage_field'  %}
+    <div class="section_image">
+      <img src="{{ block.settings.rsection_image | img_url:'master'}}">
+     </div>
+       {% endif %}
+    </div>
+</div>
+ </div>
+
+  </div>
+
+ {% endfor %}
+  </div>
+
+
+{% schema %}
+  {
+    "name": "Split Section",
+    "class": "sections-split",
+    "settings": [
+      {
+        "id": "section_margin",
+        "type": "text",
+        "label": "Add margin",
+        "default": "50px 0px 0px 0px"
+      },
+      {
+        "id": "main_title",
+        "type": "text",
+        "label": "Add section title"
+      }
+    ],
+    "blocks" :[
+      {
+       "type" : "split",
+        "name" : "Split Block",
+        "settings" : [
+          {
+            "type": "checkbox",
+            "id": "fullwidths",
+            "label": "Ful width section"
+          },
+           {
+            "type": "select",
+            "id": "left_content_type",
+            "label": "Left part Content Type",
+            "options": [
+                    {
+                      "value": "image_field",
+                      "label": "Image Field"
+                    },
+                    {
+                      "value": "text_field",
+                      "label": "Text Field"
+                    }
+            ],
+            "default": "image_field"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Select color for text",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "split_bg",
+            "label": "Select background color",
+            "default": "#ffffff"
+          },
+          {
+            "id": "section_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "section_title",
+            "type": "text",
+            "label": "Add title"
+          },
+          {
+            "id": "section_desc",
+            "type": "richtext",
+            "label": "Add description texts"
+          },
+          {
+            "type": "text",
+            "id": "ldesc_font_size",
+            "label": "Description font size",
+            "default": "16px",
+            "info": "Add font size, default is 16px"
+          },
+          {
+            "type": "select",
+            "id": "right_content_type",
+            "label": "Right part Content Type",
+            "options": [
+                    {
+                      "value": "rimage_field",
+                      "label": "Image Field"
+                    },
+                    {
+                      "value": "rtext_field",
+                      "label": "Text Field"
+                    }
+            ],
+            "default": "rimage_field"
+          },
+          {
+            "type": "color",
+            "id": "rtext_color",
+            "label": "Select color for text",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "rsplit_bg",
+            "label": "Select background color",
+            "default": "#ffffff"
+          },
+          {
+            "id": "rsection_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "rsection_title",
+            "type": "text",
+            "label": "Add title"
+          },
+          {
+            "id": "rsection_desc",
+            "type": "richtext",
+            "label": "Add description texts"
+          },
+          {
+            "type": "text",
+            "id": "rdesc_font_size",
+            "label": "Description font size",
+            "default": "16px",
+            "info": "Add font size, default is 16px"
+          }
+        ]
+    }
+    ],
+    "presets": [
+      {
+        "name": "Split Section",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

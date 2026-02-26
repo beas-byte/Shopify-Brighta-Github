@@ -1,0 +1,112 @@
+<style> 
+  .pagebanner .page_banner_right {
+    background: url({{ section.settings.page_banner | img_url:'master'}}) no-repeat !important; 
+    background-size: cover !important;
+}
+ 
+</style>
+{% if section.settings.showhide %}
+  <div class="pagebanner bea">
+    {% if section.settings.banner_type == 'bg_color_image'  %}
+      <div class="pagebanner_top">
+        <div class="page_banner_left" style="background:{{ section.settings.page_banner_color}};"></div>
+        <div class="page_banner_right" style="{% if section.settings.page_banner == blank %} background:url('https://cdn.shopify.com/s/files/1/0673/0448/9240/files/semi-trailer-long-haul-18-wheeler-big-rig-red-truc-2021-08-26-22-38-08-utc_1.jpg') no-repeat; background-size:cover !important; {% else %} background:url({{ section.settings.page_banner | img_url:'master'}}) no-repeat !important; background-size:cover !important; {% endif %}"></div>
+      </div>
+    {% endif %}
+  </div>
+
+
+   {% if section.settings.banner_type == 'bg_color'  %}
+  <div class="pagebanner_top_color">
+    <div class="page_banner_color" style="background:{{ section.settings.page_banner_color}};"></div>
+  </div>
+    {% endif %}
+
+  {% if section.settings.banner_type == 'bg_image'  %}
+  <div class="pagebanner_top_image">
+   <div class="page_banner_image" style="background:url({{ section.settings.page_banner | img_url:'master'}}) no-repeat; background-size:cover;"></div>
+  </div>
+    {% endif %}
+
+     <div class="page_title">
+      <div class="container">
+  {% if hidetitle contains 'false' %}
+  <h1>{{ page_title }}</h1>
+{% endif %}
+  
+  {% if section.settings.hidetitle %}
+   <h1>{{ section.settings.custom-tit }}</h1>
+        {% endif %}
+    </div>
+  </div>
+  
+</div>
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Custom Inner Page Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "showhide",
+        "label": "Show page title section",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "hidetitle",
+        "label": "Use Custom title?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "custom-tit",
+        "label": "Custom Title",
+        "default": "Custom title",
+        "info": "This only applies for custom titles."
+      },
+      {
+        "type": "select",
+        "id": "banner_type",
+        "label": "Select page banner type",
+        "options": [
+                {
+                  "value": "bg_color_image",
+                  "label": "Both Color & Image"
+                },
+                {
+                  "value": "bg_color",
+                  "label": "Color Background"
+                },
+                {
+                  "value": "bg_image",
+                  "label": "Image Background"
+                }
+        ],
+        "default": "bg_color_image"
+      },
+      {
+        "id": "page_banner",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "page_banner_color",
+        "type": "color",
+        "label": "Background Color",
+        "default": "#000000"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Inska Inner page custom title",
+        "category": "Custom"
+       
+      }
+    ]
+    
+  }
+{% endschema %}

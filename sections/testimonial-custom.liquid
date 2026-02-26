@@ -1,0 +1,125 @@
+<div class="abletech_testimonial_wrapper" style="background:{{ section.settings.testimonial_bg }}">
+  <div class="container">
+      <div class="testimonial_top">
+          <h2> {{ section.settings.testimonial_top_title }} </h2>
+      </div>
+   
+      <div class="testimonial_bottom">
+        {% for block in section.blocks %}
+          <div class="testimonial_item">
+            <div class="testimonial_block">
+                <div class="testimonial_item_top">
+                    <div>{{ block.settings.testmonial_desc }}</div> 
+                </div>
+                <div class="testimonial_item_bottom">
+                    <div class="testimonial_client">
+                      <h3>{{ block.settings.testmonial_name }} <span> | {{ block.settings.testmonial_company }}</span></h3>
+                    </div>
+                   <div class="blitz_feedback">
+                     <div>{{ block.settings.testmonial_feed }}</div> 
+                  </div>
+                </div>
+            </div>
+          </div>
+         {% endfor%}
+      </div>
+  </div>
+</div>
+
+<script>
+$('.testimonial_bottom').slick({
+  dots: true,
+  infinite: true,
+  arrows: true,
+  autoplay: true,
+  prevArrow: '<i class="fa-solid fa-chevron-left sizecolor icon-left"></i>',
+  nextArrow: '<i class="fa-solid fa-chevron-right sizecolor icon-right"></i>',
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+  
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Blitz Testimonial",
+    "settings": [
+      {
+        "id": "testimonial_bg",
+        "type": "color",
+        "label": "Testimonial Background",
+        "default": "#F2FAFD"
+      }
+    ],
+    "blocks" :[
+      {
+       "type" : "testimonials",
+        "name" : "Testimonial Item",
+        "settings" : [
+          {
+            "id": "testmonial_name",
+            "type": "text",
+            "label": "Add owener name",
+            "default": "John Doe"
+          },
+          {
+            "id": "testmonial_company",
+            "type": "text",
+            "label": "Company/Designation",
+            "default": "CEO/Steel Comapny"
+          },
+          {
+            "id": "testmonial_desc",
+            "type": "richtext",
+            "label": "Testimonial texts",
+            "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>"
+          },
+          {
+            "id": "testmonial_feed",
+            "type": "richtext",
+            "label": "Feedback",
+            "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>"
+          }
+        ]
+    }
+    ],
+     "presets": [
+    {
+      "name": "Brighta Testimonial",
+      "category": "Custom"
+
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,143 @@
+<div class="image_column_section" style="padding-top:{{ section.settings.padding_top }}px; 
+  padding-bottom:{{ section.settings.padding_bottom }}px; margin-top:{{ section.settings.margin_top }}px; margin-bottom:{{ section.settings.margin_bottom }}px;">
+     <div class="container">
+       {% if section.settings.section_title != blank %}
+       <div class="section-title">
+          <h2>{{ section.settings.section_title}}</h2>
+       </div>
+       {% endif %}
+     <div class="column-items">   
+    {% for block in section.blocks %}
+    <div class="image_column_item deskitem" style="width: {{ block.settings.item_width}}%">
+         <img src="{{ block.settings.col_image_item | img_url:'master'}}">
+      
+    <h3>{{ block.settings.pre_size_title}}</h3>
+    
+    <h4>{{ block.settings.product_size_title}}</h4>
+    
+       <div class="item-desc">
+      <p>{{ block.settings.product_size_specs}}</p>
+    </div>
+      {% if block.settings.product_size_link != blank %}
+      <div class="item-button">
+        <a href="{{ block.settings.product_size_link}}">
+           {{ block.settings.psbtn_name}}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+       
+     {% endfor %}
+       </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Image With Columns",
+    "class": "sections-images-cols",
+    "settings": [
+      {
+        "type": "range",
+        "id": "margin_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Margin Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Margin Bottom",
+        "default": 0
+      },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 80
+      },
+      {
+            "id": "section_title",
+            "type": "text",
+            "label": "Section title",
+            "default": "Title"
+          }
+      
+    ],
+    "blocks": [
+      {
+        "type" : "imageblock",
+        "name" : "Image Block",
+        "settings": [
+          {
+            "id": "item_width",
+            "type": "text",
+            "label": "Add width in %",
+            "default": "25"
+          },
+          {
+            "id": "col_image_item",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "pre_size_title",
+            "type": "text",
+            "label": "Tile Text",
+            "default": "Title"
+          },
+          {
+            "id": "product_size_title",
+            "type": "text",
+            "label": "Subtitle",
+            "default": "Subtitle"
+          },         
+          {
+            "id": "product_size_specs",
+            "type": "richtext",
+            "label": "Description"
+          },
+          {
+            "id": "psbtn_name",
+            "type": "text",
+            "label": "Button tilte",
+            "default": "Learn More"
+          },
+          {
+            "id": "product_size_link",
+            "type": "url",
+            "label": "Link"
+          }       
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Brighta Image Columns",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

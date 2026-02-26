@@ -1,0 +1,149 @@
+<style>
+     .column-sizes{
+      display:grid;
+       grid-template-columns:1fr 1fr 1fr;
+       gap: {{ section.settings.column-gap }};
+      }
+</style>
+<div class="product-sizes-column">
+ {% for block in section.blocks %}
+ <div class="container">
+<div class="product-sizes-container">   
+<div class="product-size-item">
+  <div class="product-size-item-wrap">
+  {% if block.settings.left_content_type == 'image_field'  %}
+    <div class="section_image">
+      <img src="{{ block.settings.section_image | img_url:'master'}}">
+     </div>
+    {% endif %}
+  {% if block.settings.left_content_type == 'text_field'  %}
+     <div class="product-size-item-title">
+        <h2 style="color:{{ block.settings.text_color }} ;"> {{ block.settings.section_title }} </h2>
+        <div style="color:{{ block.settings.text_color }} ;">{{ block.settings.section_desc }}</div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+ </div>
+
+  </div>
+
+ {% endfor %}
+  </div>
+
+
+{% schema %}
+  {
+    "name": "Product Sizes Columns",
+    "class": "product-sizes",
+    "settings": [   
+      {
+        "id": "main_title",
+        "type": "text",
+        "label": "Add section title"
+      }
+    ],
+    "blocks" :[
+      {
+       "type" : "split",
+        "name" : "Split Block",
+        "settings" : [
+          
+           {
+            "type": "select",
+            "id": "left_content_type",
+            "label": "Left part Content Type",
+            "options": [
+                    {
+                      "value": "image_field",
+                      "label": "Image Field"
+                    },
+                    {
+                      "value": "text_field",
+                      "label": "Text Field"
+                    }
+            ],
+            "default": "image_field"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Select color for text",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "split_bg",
+            "label": "Select background color",
+            "default": "#ffffff"
+          },
+          {
+            "id": "section_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "section_title",
+            "type": "text",
+            "label": "Product title"
+          },
+          {
+            "id": "section_desc",
+            "type": "richtext",
+            "label": "Product Technical Specs"
+          },
+          {
+            "type": "select",
+            "id": "right_content_type",
+            "label": "Right part Content Type",
+            "options": [
+                    {
+                      "value": "rimage_field",
+                      "label": "Image Field"
+                    },
+                    {
+                      "value": "rtext_field",
+                      "label": "Text Field"
+                    }
+            ],
+            "default": "rimage_field"
+          },
+          {
+            "type": "color",
+            "id": "rtext_color",
+            "label": "Select color for text",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "rsplit_bg",
+            "label": "Select background color",
+            "default": "#ffffff"
+          },
+          {
+            "id": "rsection_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "rsection_title",
+            "type": "text",
+            "label": "Add title"
+          },
+          {
+            "id": "rsection_desc",
+            "type": "richtext",
+            "label": "Add description texts"
+          }
+        ]
+    }
+    ],
+    "presets": [
+      {
+        "name": "Split Section",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

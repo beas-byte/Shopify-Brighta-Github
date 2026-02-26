@@ -1,0 +1,53 @@
+<div class="footer_cta_wrapper" style="background: {{ section.settings.cta_bacground_color }};">
+  <div class="container">
+    <div class="footer_cta_container">
+          <div class="footer_cta_content">
+            <h2> {{ section.settings.cta_text_title }} </h2>
+            <!-- <div>{{ section.settings.cta_text_body }}</div> -->
+          </div>
+      <div class="footer_cta_link">
+          <!-- <img src="{{ section.settings.cta_bacground_image | img_url:'master'}}"> -->
+         <a href="{{ section.settings.cta_button_link }}">{{ section.settings.cta_button_text }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Footer CTA",
+    "settings": [
+      
+      {
+        "id": "cta_text_title",
+        "type": "text",
+        "label": "CTA heading",
+        "default": "Enquire Now"
+      },
+      
+      {
+        "id": "cta_button_text",
+        "type": "text",
+        "label": "Add button text below",
+        "default": "Contact Us"
+      },
+      {
+        "id": "cta_button_link",
+        "type": "url",
+        "label": "Add button link below"
+      },
+      {
+        "id": "cta_bacground_color",
+        "type": "color",
+        "label": "Add CTA background color"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

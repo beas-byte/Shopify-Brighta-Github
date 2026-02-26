@@ -1,0 +1,108 @@
+<div class="abletech_items_wrapper" style="background:{{ section.settings.section_bg }}">
+  <div class="container">
+      <div class="item_top">
+         <div class="itemtop-left">
+          
+          <h2> {{ section.settings.section_top_title }} </h2>
+         </div>
+        <div class="itemtop-right">
+          <a href="{{ section.settings.section_btn_url }}">{{ section.settings.section_btn_title }}</a>
+        </div>
+      </div>
+   
+      <div class="item_bottom">
+        {% for block in section.blocks %}
+          <div class="elemnent_item" style="width:{{ block.settings.item_width }}%;">
+                    <img src="{{ block.settings.item_image | img_url:'master'}}">
+                    <h3>{{ block.settings.item_title }}</h3>
+                    <div>{{ block.settings.item_desc }}</div>
+                    <a class="item-butt" href="{{ block.settings.item_btn_url }}">{{ block.settings.item_btn_title }}</a>
+          </div>
+         {% endfor%}
+      </div>
+    
+  </div>
+</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "Products & Services Block",
+    "settings": [
+      {
+        "id": "section_bg",
+        "type": "color",
+        "label": "Section Background",
+        "default": "#F2FAFD"
+      },
+      {
+        "id": "section_top_title",
+        "type": "text",
+        "label": "Section Heading",
+        "default": "All Products"
+      },
+      {
+        "id": "section_btn_title",
+        "type": "text",
+        "label": "Buttone Title",
+        "default": "Learn more"
+      },
+      {
+        "id": "section_btn_url",
+        "type": "url",
+        "label": "Button Link"
+      }
+    ],
+    "blocks" :[
+      {
+       "type" : "items",
+        "name" : "Block Item",
+        "settings" : [
+          {
+            "id": "item_width",
+            "type": "text",
+            "label": "Add item width in %",
+            "default": "50"
+          },
+          {
+            "id": "item_image",
+            "type": "image_picker",
+            "label": "Add image"
+          },
+          {
+            "id": "item_title",
+            "type": "text",
+            "label": "Add title",
+            "default": "Products"
+          },
+          {
+            "id": "item_desc",
+            "type": "richtext",
+            "label": "Add description",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>"
+          },
+          {
+            "id": "item_btn_title",
+            "type": "text",
+            "label": "Buttone Title",
+            "default": "Learn more"
+          },
+          {
+            "id": "item_btn_url",
+            "type": "url",
+            "label": "Button Link"
+          }
+        ]
+    }
+    ],
+     "presets": [
+    {
+      "name": "Brighta Products & Services",
+      "category": "Custom"
+
+    }
+  ]
+  }
+{% endschema %}
